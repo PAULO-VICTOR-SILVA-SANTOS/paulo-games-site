@@ -1,41 +1,68 @@
 /**
- * Scene data for the scroll-scrub journey — THE file you fill in per build.
+ * Scene data for the scroll-scrub journey (design-brief.md).
  *
- * Single-shot (the default): ONE entry in `scenes`, whose `clip` is the single
- * continuous film. Chapter copy still comes from `chapters` below, rendered as
- * semantic sections over that one clip.
- *
- * Multi-leg (opt-in): one entry per seam-locked leg, in journey order. Every
- * `poster` MUST be the exact first frame of the encoded clip beside it — never
- * a design board or an imagined destination still.
- *
- * Keep this array a module constant. Changing its identity on every render
- * intentionally rebuilds the media controller.
+ * Single-shot: the client's own footage is one continuous ~12s take. It is
+ * cut into 3 sequential, frame-contiguous segments (no generation, no seams
+ * to lock — each segment's first frame is the previous segment's real last
+ * frame, because they are literally cuts of the same file) so three chapters
+ * of copy can read over one unbroken take.
  */
-import type {
-  ScrollScrubScene,
-  ScrollScrubTheme,
-} from "@/components/scroll-scrub/scroll-scrub";
+import { createElement } from "react";
 
-/** Brand tokens for the journey layer. Set these from the design brief. */
+import type { ScrollScrubScene, ScrollScrubTheme } from "@/components/scroll-scrub/scroll-scrub";
+import { PrimaryCta } from "@/components/cta-buttons";
+
 export const scrollScrubTheme: ScrollScrubTheme = {
-  accent: "<accent hex>",
-  background: "<background hex>",
-  ink: "<ink hex>",
-  muted: "<muted ink hex>",
+  accent: "#D9483A",
+  background: "#1D2024",
+  ink: "#F1EDE6",
+  muted: "#8B9199",
 };
 
 export const scrollScrubScenes: ScrollScrubScene[] = [
   {
-    body: "<one sentence that earns the next scroll>",
-    clip: "/assets/world/scene-01.mp4",
-    id: "scene-01",
-    kicker: "<kicker>",
-    label: "<nav label>",
-    mobileClip: "/assets/world/scene-01-mobile.mp4",
-    mobilePoster: "/assets/world/scene-01-mobile-poster.png",
-    poster: "/assets/world/scene-01-poster.png",
-    tags: ["<proof tag>"],
-    title: "<scene headline>",
+    body: "Armamento pesado, mundos em chamas e as campanhas mais brutais do ano, selecionadas para quem joga sem freio.",
+    clip: "/assets/world/scene-mech.mp4",
+    id: "scene-mech",
+    kicker: "TRANSMISSÃO AO VIVO",
+    label: "Base",
+    mobileClip: "/assets/world/scene-mech-mobile.mp4",
+    mobilePoster: "/assets/world/scene-mech-mobile-poster.png",
+    objectPosition: "50% 40%",
+    poster: "/assets/world/scene-mech-poster.png",
+    scroll: 1.5,
+    tags: ["18+", "Ação", "Guerra"],
+    title: "Paulo Games",
+  },
+  {
+    body: "Cada título do catálogo passou pelo mesmo teste: aguenta a pressão do combate real ou fica de fora.",
+    clip: "/assets/world/scene-impact.mp4",
+    id: "scene-impact",
+    kicker: "SOB FOGO",
+    label: "Impacto",
+    mobileClip: "/assets/world/scene-impact-mobile.mp4",
+    mobileObjectPosition: "70% 45%",
+    mobilePoster: "/assets/world/scene-impact-mobile-poster.png",
+    objectPosition: "62% 45%",
+    poster: "/assets/world/scene-impact-poster.png",
+    scroll: 1.5,
+    tags: ["FPS", "Tático", "Multiplayer"],
+    title: "Todo lançamento acerta em cheio",
+  },
+  {
+    actions: createElement(PrimaryCta, { href: "#arsenal" }, "Entrar no Arsenal"),
+    align: "right",
+    body: "Entre no arsenal completo e escolha o próximo campo de batalha.",
+    clip: "/assets/world/scene-aftermath.mp4",
+    id: "scene-aftermath",
+    kicker: "SEM RECUAR",
+    label: "Arsenal",
+    mobileClip: "/assets/world/scene-aftermath-mobile.mp4",
+    mobileObjectPosition: "68% 40%",
+    mobilePoster: "/assets/world/scene-aftermath-mobile-poster.png",
+    objectPosition: "66% 40%",
+    poster: "/assets/world/scene-aftermath-poster.png",
+    scroll: 1.6,
+    title: "Sua próxima missão começa aqui",
   },
 ];

@@ -8,8 +8,6 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
-import { button } from "@higgsfield/quanta/button";
-import { NotFound } from "@higgsfield/quanta/not-found";
 
 import appCss from "../styles.css?url";
 import { reportHiggsfieldError } from "../lib/higgsfield-error-reporting";
@@ -80,7 +78,8 @@ function buildHead(meta: AppMeta) {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title },
       { name: "description", content: description },
-      { name: "author", content: "Higgsfield" },
+      { name: "author", content: "Paulo Games" },
+      { name: "theme-color", content: "#1D2024" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
@@ -99,23 +98,27 @@ function buildHead(meta: AppMeta) {
     links: [
       { rel: "stylesheet", href: appCss },
       ...(favicon ? [{ rel: "icon", href: favicon }] : []),
+      { rel: "icon", href: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
   };
 }
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-q-background-primary px-4">
-      <NotFound
-        className="mx-auto max-w-md"
-        icon={<span className="text-q-title-md-semi-bold text-q-text-primary">404</span>}
-        title="Page not found"
-        subtitle="The page you're looking for doesn't exist or has been moved."
+    <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-brand-bg px-4 text-center">
+      <span className="font-tag text-sm tracking-[0.2em] text-brand-accent">SINAL PERDIDO</span>
+      <h1 className="font-display text-4xl font-semibold text-brand-ink">404</h1>
+      <p className="max-w-sm text-brand-muted">
+        Esta posição não consta no mapa. A página que você procura não existe ou foi movida.
+      </p>
+      <Link
+        to="/"
+        className="mt-2 rounded-full bg-brand-accent px-5 py-2.5 font-medium text-brand-accent-ink transition-transform active:scale-[0.98]"
       >
-        <Link to="/" className={button({ variant: "primary", size: "md" }, "mt-3")}>
-          Go home
-        </Link>
-      </NotFound>
+        Voltar à base
+      </Link>
     </div>
   );
 }
@@ -128,11 +131,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-q-background-primary px-4">
+    <div className="flex min-h-dvh items-center justify-center bg-brand-bg px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-q-title-lg-semi-bold text-q-text-primary">This page didn't load</h1>
-        <p className="mt-2 text-q-body-sm-regular text-q-text-secondary">
-          Something went wrong on our end. You can try refreshing or head back home.
+        <h1 className="font-display text-2xl font-semibold text-brand-ink">
+          A página não carregou
+        </h1>
+        <p className="mt-2 text-sm text-brand-muted">
+          Algo falhou do nosso lado. Tente atualizar ou volte para a base.
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-2">
           <button
@@ -140,12 +145,15 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className={button({ variant: "primary", size: "md" })}
+            className="rounded-full bg-brand-accent px-5 py-2.5 font-medium text-brand-accent-ink transition-transform active:scale-[0.98]"
           >
-            Try again
+            Tentar de novo
           </button>
-          <a href="/" className={button({ variant: "outline", size: "md" })}>
-            Go home
+          <a
+            href="/"
+            className="rounded-full border border-brand-border px-5 py-2.5 font-medium text-brand-ink transition-colors hover:border-brand-accent"
+          >
+            Voltar à base
           </a>
         </div>
       </div>
@@ -171,7 +179,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-q-background-primary text-q-text-primary">
+      <body>
         {children}
         <Scripts />
       </body>

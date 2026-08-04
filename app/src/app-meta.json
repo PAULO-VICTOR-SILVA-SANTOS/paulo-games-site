@@ -1,8 +1,8 @@
 {
-  "og_title": null,
-  "og_description": null,
-  "og_image_url": null,
-  "favicon_url": null,
+  "og_title": "Paulo Games",
+  "og_description": "Arsenal 18+ de ação e guerra para quem joga de verdade.",
+  "og_image_url": "/og.png",
+  "favicon_url": "/favicon.svg",
   "og_video_url": null,
-  "marketplace_cover_url": null
+  "marketplace_cover_url": "/cover.png"
 }

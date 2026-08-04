@@ -1,3 +1,7 @@
+/* Paulo Games brand fonts (Outfit display + IBM Plex Mono for HUD-style
+ * labels/kickers) — must precede every other rule, @import included. */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
 /* Cascade layer order: reset lowest, then Tailwind/Quanta base, then
  * components and finally utilities — so Quanta's q-* utilities (e.g.
  * q-button-*) always win over global element resets. */
@@ -96,6 +100,21 @@
   --font-grotesk: var(--hf-type-family-grotesk);
 }
 
+/* Paulo Games — independent brand tokens (design-brief.md). This site never
+ * uses q-prefixed utilities or --hf-* tokens in its own content; these are
+ * the only palette/type variables the route and section components read. */
+@theme {
+  --color-brand-bg: #1d2024;
+  --color-brand-bg-panel: #262a2f;
+  --color-brand-ink: #f1ede6;
+  --color-brand-muted: #8b9199;
+  --color-brand-border: #383d43;
+  --color-brand-accent: #d9483a;
+  --color-brand-accent-ink: #f1ede6;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-tag: "IBM Plex Mono", ui-monospace, monospace;
+}
+
 /* Fills used by src/components/ui (badge, tabs, marketing-button), mapped to
  * Quanta's --hf-gradient-* tokens. */
 @utility badge-gradient-blue {
@@ -160,25 +179,60 @@
   background: var(--hf-color-overlay-hover);
 }
 
+/* Paulo Games — on-mount headline build (screenshot-safe: fires on paint, not
+ * gated by IntersectionObserver/whileInView, per design-recipe.md §6). */
+@layer components {
+  @keyframes pg-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .pg-reveal {
+    animation: pg-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .pg-reveal-delay-1 {
+    animation-delay: 0.08s;
+  }
+
+  .pg-reveal-delay-2 {
+    animation-delay: 0.16s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-reveal,
+  .pg-reveal-delay-1,
+  .pg-reveal-delay-2 {
+    animation: none;
+  }
+}
+
 :root {
   --radius: 0.625rem;
 }
 
 @layer base {
   html {
-    background-color: var(--hf-color-background-primary);
-    color: var(--hf-color-text-primary);
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-ink);
     color-scheme: dark;
   }
 
   body {
     min-height: 100vh;
-    background-color: var(--hf-color-background-primary);
-    color: var(--hf-color-text-primary);
-    font-family: var(--hf-type-family-secondary);
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-ink);
+    font-family: var(--font-display);
   }
 
   * {
-    border-color: var(--hf-color-border-default);
+    border-color: var(--color-brand-border);
   }
 }
