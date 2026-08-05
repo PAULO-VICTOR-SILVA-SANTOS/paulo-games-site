@@ -17,7 +17,8 @@ animated website is the Tier-1 carrier; no second competing hero effect.
 - Background `#1D2024` — gunmetal, not pure graphite/near-black; reads as
   steel plate under low light, not an AI-slop void.
 - Ink `#F1EDE6` — warm off-white, paper/steel-tag color.
-- Muted `#8B9199` — cool steel gray for secondary text.
+- Muted `#A1A8B0` — cool steel gray for secondary text (lightened from the
+  initial `#8B9199` after client feedback for stronger legibility).
 - Accent `#D9483A` — signal/alert red, pulled from the footage's own tactical
   HUD warning color, not the banned ember-on-graphite or neon-cyan-on-black
   families. One accent, used sparingly (CTAs, the scrub progress bar, alert
@@ -62,7 +63,11 @@ Logo/monogram: 1 generated mark (no existing logo). Cover/OG: 1 generated
 scene, composed with the brand lockup. Section imagery: video stills already
 on hand (posters) + CSS/typographic treatment — the icon set and extra section
 plates are deliberately skipped this build to stay inside a 10-credit budget;
-flagged to the client as an easy add-on later.
+flagged to the client as an easy add-on later. Catalog cards: 6 of 8 generated
+key-art covers (nano_banana_flash, silhouette/hardware-focused prompts to
+avoid war-content false-positive flags); "Linha de Frente" and "Cerco Final"
+still use the text-only fallback treatment — the free-plan credit balance ran
+out mid-batch, remaining 2 are a quick follow-up once credits are available.
 
 **CTA inventory** (one label per intent, each its own component):
 1. Nav — "Catálogo" (anchor link, underline sweep on hover).

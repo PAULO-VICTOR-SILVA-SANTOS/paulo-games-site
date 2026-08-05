@@ -16,7 +16,7 @@ export const scrollScrubTheme: ScrollScrubTheme = {
   accent: "#D9483A",
   background: "#1D2024",
   ink: "#F1EDE6",
-  muted: "#8B9199",
+  muted: "#A1A8B0",
 };
 
 export const scrollScrubScenes: ScrollScrubScene[] = [

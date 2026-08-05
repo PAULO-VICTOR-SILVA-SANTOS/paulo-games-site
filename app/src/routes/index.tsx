@@ -27,11 +27,13 @@ type Game = {
   price: string;
   blurb: string;
   rank: string;
+  cover?: string;
 };
 
 const games: Game[] = [
   {
     blurb: "Assalte bases fortificadas em esquadrões de quatro, sem respawn fácil.",
+    cover: "/assets/games/vanguard-protocol.webp",
     genre: "FPS Tático",
     price: "R$ 249,90",
     rank: "01",
@@ -39,6 +41,7 @@ const games: Game[] = [
   },
   {
     blurb: "Pilote colossos blindados em campanhas que destroem cidades inteiras.",
+    cover: "/assets/games/iron-sortie.webp",
     genre: "Combate de Mechas",
     price: "R$ 279,90",
     rank: "02",
@@ -46,6 +49,7 @@ const games: Game[] = [
   },
   {
     blurb: "Sobreviva ao cerco com munição limitada e decisões que pesam.",
+    cover: "/assets/games/ultima-trincheira.webp",
     genre: "Survival de Guerra",
     price: "R$ 199,90",
     rank: "03",
@@ -53,6 +57,7 @@ const games: Game[] = [
   },
   {
     blurb: "Infiltração noturna em território hostil, um erro custa a missão.",
+    cover: "/assets/games/zona-cinzenta.webp",
     genre: "Guerrilha Urbana",
     price: "R$ 229,90",
     rank: "04",
@@ -60,6 +65,7 @@ const games: Game[] = [
   },
   {
     blurb: "Defenda um reator orbital de uma invasão em tempo real.",
+    cover: "/assets/games/reator-nove.webp",
     genre: "Ficção Científica Tática",
     price: "R$ 259,90",
     rank: "05",
@@ -67,6 +73,7 @@ const games: Game[] = [
   },
   {
     blurb: "Até quatro jogadores, uma retirada impossível sob fogo cruzado.",
+    cover: "/assets/games/chumbo-e-cinzas.webp",
     genre: "Ação Cooperativa",
     price: "R$ 219,90",
     rank: "06",
@@ -138,14 +145,27 @@ function GameCard({ game, featured = false }: { game: Game; featured?: boolean }
   return (
     <article
       className={
-        "relative flex flex-col justify-between overflow-hidden rounded-2xl border border-brand-border bg-brand-bg-panel p-6 " +
-        (featured ? "lg:col-span-2 lg:row-span-2 lg:p-10" : "")
+        "group relative flex min-h-80 flex-col justify-between overflow-hidden rounded-2xl border border-brand-border p-6 " +
+        (game.cover ? "" : "bg-brand-bg-panel ") +
+        (featured ? "lg:col-span-2 lg:row-span-2 lg:min-h-full lg:p-10" : "")
       }
     >
+      {game.cover ? (
+        <>
+          <img
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            loading="lazy"
+            src={game.cover}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/60 to-brand-bg/5" />
+        </>
+      ) : null}
       <span
         aria-hidden="true"
         className={
-          "pointer-events-none absolute -right-2 -top-4 font-display font-bold text-brand-border/60 " +
+          "pointer-events-none absolute -right-2 -top-4 font-display font-bold text-brand-ink/10 " +
           (featured ? "text-rank-lg" : "text-rank-md")
         }
       >
@@ -157,17 +177,22 @@ function GameCard({ game, featured = false }: { game: Game; featured?: boolean }
         </span>
         <h3
           className={
-            "mt-4 font-display font-semibold text-brand-ink " +
+            "mt-4 font-display font-bold text-brand-ink text-shadow-card-title " +
             (featured ? "text-3xl sm:text-4xl" : "text-xl")
           }
         >
           {game.title}
         </h3>
-        <p className={"mt-2 text-brand-muted " + (featured ? "max-w-md text-base" : "text-sm")}>
+        <p
+          className={
+            "mt-2 text-brand-muted text-shadow-card-body " +
+            (featured ? "max-w-md text-base" : "text-sm")
+          }
+        >
           {game.blurb}
         </p>
       </div>
-      <p className="relative mt-6 font-tag text-sm text-brand-ink">{game.price}</p>
+      <p className="relative mt-6 font-tag text-sm font-medium text-brand-ink">{game.price}</p>
     </article>
   );
 }
@@ -195,7 +220,7 @@ function Index() {
         <p className="pg-reveal font-tag text-xs tracking-[0.2em] text-brand-accent">
           O ARSENAL
         </p>
-        <h2 className="pg-reveal pg-reveal-delay-1 mt-3 max-w-2xl font-display text-4xl font-semibold tracking-tight text-brand-ink sm:text-5xl">
+        <h2 className="pg-reveal pg-reveal-delay-1 mt-3 max-w-2xl font-display text-4xl font-bold tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
           Munição para quem já cansou do modo fácil
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -209,7 +234,7 @@ function Index() {
         id="zonas-de-combate"
         className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32"
       >
-        <h2 className="pg-reveal max-w-2xl font-display text-4xl font-semibold tracking-tight text-brand-ink sm:text-5xl">
+        <h2 className="pg-reveal max-w-2xl font-display text-4xl font-bold tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
           Zonas de combate
         </h2>
         <p className="pg-reveal pg-reveal-delay-1 mt-3 max-w-lg text-brand-muted">
@@ -230,7 +255,7 @@ function Index() {
           <p className="pg-reveal font-tag text-xs tracking-[0.2em] text-brand-accent">
             REGISTRO DO COMANDO
           </p>
-          <h2 className="pg-reveal pg-reveal-delay-1 mt-3 font-display text-4xl font-semibold tracking-tight text-brand-ink sm:text-5xl">
+          <h2 className="pg-reveal pg-reveal-delay-1 mt-3 font-display text-4xl font-bold tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
             Curadoria de quem testa cada campanha
           </h2>
           <p className="pg-reveal pg-reveal-delay-2 mt-6 max-w-md text-brand-muted">
@@ -257,7 +282,7 @@ function Index() {
       <section className="px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto flex max-w-4xl flex-col items-start gap-8 rounded-3xl border border-brand-border bg-brand-bg-panel px-8 py-16 sm:px-16">
           <p className="font-tag text-xs tracking-[0.2em] text-brand-accent">REPORTAR-SE</p>
-          <h2 className="max-w-lg font-display text-4xl font-semibold tracking-tight text-brand-ink sm:text-5xl">
+          <h2 className="max-w-lg font-display text-4xl font-bold tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
             Pronto para entrar em campo?
           </h2>
           <OutlineCta href="mailto:contato@paulogames.com.br">Falar com o Comando</OutlineCta>
