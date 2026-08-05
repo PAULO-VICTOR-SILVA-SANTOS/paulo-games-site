@@ -115,6 +115,19 @@
   --font-tag: "IBM Plex Mono", ui-monospace, monospace;
 }
 
+/* Paulo Games — HUD-scale type sizes outside Tailwind's default scale. */
+@utility text-tag-2xs {
+  font-size: 0.65rem;
+}
+@utility text-rank-lg {
+  font-size: 7rem;
+  line-height: 1;
+}
+@utility text-rank-md {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
 /* Fills used by src/components/ui (badge, tabs, marketing-button), mapped to
  * Quanta's --hf-gradient-* tokens. */
 @utility badge-gradient-blue {

@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportHiggsfieldError } from "../lib/higgsfield-error-reporting";
+import { THEME_COLOR } from "../lib/theme-color";
 // Page metadata (browser <title>/favicon + social og: tags) committed into the
 // repo by the marketplace meta API and read at BUILD time — no runtime fetch.
 // Editing it via the app settings UI rewrites this file and redeploys the app.
@@ -79,12 +80,11 @@ function buildHead(meta: AppMeta) {
       { title },
       { name: "description", content: description },
       { name: "author", content: "Paulo Games" },
-      { name: "theme-color", content: "#1D2024" },
+      { name: "theme-color", content: THEME_COLOR },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: ogImage ? "summary_large_image" : "summary" },
-      { name: "twitter:site", content: "@Higgsfield" },
       ...(ogImage
         ? [
             { property: "og:image", content: ogImage },

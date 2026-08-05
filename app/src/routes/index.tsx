@@ -104,18 +104,18 @@ function Nav() {
     <header className="fixed inset-x-0 top-0 z-20 flex items-center justify-between gap-4 px-5 py-4 sm:px-8">
       <a href="#top" className="flex items-center gap-2.5">
         <svg viewBox="0 0 64 64" className="size-8" aria-hidden="true">
-          <rect width="64" height="64" rx="12" fill="#1D2024" />
+          <rect width="64" height="64" rx="12" fill="var(--color-brand-bg)" />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M18 12H46V36H26V52H18V12ZM26 20V28H38V20H26Z"
-            fill="#D9483A"
+            fill="var(--color-brand-accent)"
           />
         </svg>
         <span className="font-display text-sm font-semibold tracking-tight text-brand-ink">
           Paulo Games
         </span>
-        <span className="rounded-full border border-brand-border px-2 py-0.5 font-tag text-[0.65rem] text-brand-muted">
+        <span className="rounded-full border border-brand-border px-2 py-0.5 font-tag text-tag-2xs text-brand-muted">
           18+
         </span>
       </a>
@@ -146,13 +146,13 @@ function GameCard({ game, featured = false }: { game: Game; featured?: boolean }
         aria-hidden="true"
         className={
           "pointer-events-none absolute -right-2 -top-4 font-display font-bold text-brand-border/60 " +
-          (featured ? "text-[7rem] leading-none" : "text-[4.5rem] leading-none")
+          (featured ? "text-rank-lg" : "text-rank-md")
         }
       >
         {game.rank}
       </span>
       <div className="relative">
-        <span className="inline-block rounded-full bg-brand-bg px-2.5 py-1 font-tag text-[0.65rem] tracking-wide text-brand-accent">
+        <span className="inline-block rounded-full bg-brand-bg px-2.5 py-1 font-tag text-tag-2xs tracking-wide text-brand-accent">
           {game.genre}
         </span>
         <h3
@@ -268,12 +268,12 @@ function Index() {
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div className="flex items-center gap-2.5">
             <svg viewBox="0 0 64 64" className="size-6" aria-hidden="true">
-              <rect width="64" height="64" rx="12" fill="#1D2024" />
+              <rect width="64" height="64" rx="12" fill="var(--color-brand-bg)" />
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M18 12H46V36H26V52H18V12ZM26 20V28H38V20H26Z"
-                fill="#D9483A"
+                fill="var(--color-brand-accent)"
               />
             </svg>
             <span className="font-display text-sm font-semibold text-brand-ink">Paulo Games</span>
