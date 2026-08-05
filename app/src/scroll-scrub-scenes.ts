@@ -50,7 +50,7 @@ export const scrollScrubScenes: ScrollScrubScene[] = [
     title: "Todo lançamento acerta em cheio",
   },
   {
-    actions: createElement(PrimaryCta, { href: "#arsenal" }, "Entrar no Arsenal"),
+    actions: createElement(PrimaryCta, { href: "#arsenal", children: "Entrar no Arsenal" }),
     align: "right",
     body: "Entre no arsenal completo e escolha o próximo campo de batalha.",
     clip: "/assets/world/scene-aftermath.mp4",
