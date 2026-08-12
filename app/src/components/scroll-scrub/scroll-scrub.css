@@ -84,7 +84,9 @@
 .scroll-scrub__route {
   position: absolute;
   z-index: 6;
-  top: clamp(1rem, 3vw, 2rem);
+  /* Clears the fixed site header (~4.4rem tall) so the chapter buttons never
+     sit underneath it. */
+  top: clamp(5rem, 3vw + 4rem, 6rem);
   right: clamp(1rem, 4vw, 4rem);
   left: clamp(1rem, 4vw, 4rem);
   display: flex;

@@ -26,7 +26,6 @@ type Game = {
   genre: string;
   price: string;
   blurb: string;
-  rank: string;
   cover?: string;
 };
 
@@ -36,7 +35,6 @@ const games: Game[] = [
     cover: "/assets/games/vanguard-protocol.webp",
     genre: "FPS Tático",
     price: "R$ 249,90",
-    rank: "01",
     title: "Vanguard Protocol",
   },
   {
@@ -44,7 +42,6 @@ const games: Game[] = [
     cover: "/assets/games/iron-sortie.webp",
     genre: "Combate de Mechas",
     price: "R$ 279,90",
-    rank: "02",
     title: "Iron Sortie",
   },
   {
@@ -52,7 +49,6 @@ const games: Game[] = [
     cover: "/assets/games/ultima-trincheira.webp",
     genre: "Survival de Guerra",
     price: "R$ 199,90",
-    rank: "03",
     title: "Última Trincheira",
   },
   {
@@ -60,7 +56,6 @@ const games: Game[] = [
     cover: "/assets/games/zona-cinzenta.webp",
     genre: "Guerrilha Urbana",
     price: "R$ 229,90",
-    rank: "04",
     title: "Zona Cinzenta",
   },
   {
@@ -68,7 +63,6 @@ const games: Game[] = [
     cover: "/assets/games/reator-nove.webp",
     genre: "Ficção Científica Tática",
     price: "R$ 259,90",
-    rank: "05",
     title: "Reator Nove",
   },
   {
@@ -76,7 +70,6 @@ const games: Game[] = [
     cover: "/assets/games/chumbo-e-cinzas.webp",
     genre: "Ação Cooperativa",
     price: "R$ 219,90",
-    rank: "06",
     title: "Chumbo e Cinzas",
   },
   {
@@ -84,7 +77,6 @@ const games: Game[] = [
     cover: "/assets/games/linha-de-frente.webp",
     genre: "Estratégia Bélica",
     price: "R$ 189,90",
-    rank: "07",
     title: "Linha de Frente",
   },
   {
@@ -92,7 +84,6 @@ const games: Game[] = [
     cover: "/assets/games/cerco-final.webp",
     genre: "Battle Royale Tático",
     price: "R$ 149,90",
-    rank: "08",
     title: "Cerco Final",
   },
 ];
@@ -110,7 +101,7 @@ const categories: Category[] = [
 
 function Nav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-20 flex items-center justify-between gap-4 px-5 py-4 sm:px-8">
+    <header className="fixed inset-x-0 top-0 z-20 flex items-center justify-between gap-4 bg-brand-bg/70 px-5 py-4 backdrop-blur-md sm:px-8">
       <a href="#top" className="flex items-center gap-2.5">
         <svg viewBox="0 0 64 64" className="size-8" aria-hidden="true">
           <rect width="64" height="64" rx="12" fill="var(--color-brand-bg)" />
@@ -164,15 +155,6 @@ function GameCard({ game, featured = false }: { game: Game; featured?: boolean }
           <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/60 to-brand-bg/5" />
         </>
       ) : null}
-      <span
-        aria-hidden="true"
-        className={
-          "pointer-events-none absolute -right-2 -top-4 font-display font-bold text-brand-ink/10 " +
-          (featured ? "text-rank-lg" : "text-rank-md")
-        }
-      >
-        {game.rank}
-      </span>
       <div className="relative">
         <span className="inline-block rounded-full bg-brand-bg px-2.5 py-1 font-tag text-tag-2xs tracking-wide text-brand-accent">
           {game.genre}

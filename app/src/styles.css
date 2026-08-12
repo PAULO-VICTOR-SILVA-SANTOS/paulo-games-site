@@ -119,14 +119,6 @@
 @utility text-tag-2xs {
   font-size: 0.65rem;
 }
-@utility text-rank-lg {
-  font-size: 7rem;
-  line-height: 1;
-}
-@utility text-rank-md {
-  font-size: 4.5rem;
-  line-height: 1;
-}
 @utility text-shadow-card-title {
   text-shadow: 0 2px 10px rgb(0 0 0 / 55%);
 }
