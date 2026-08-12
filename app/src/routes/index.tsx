@@ -81,6 +81,7 @@ const games: Game[] = [
   },
   {
     blurb: "Comande batalhões inteiros em frentes que mudam a cada minuto.",
+    cover: "/assets/games/linha-de-frente.webp",
     genre: "Estratégia Bélica",
     price: "R$ 189,90",
     rank: "07",
@@ -88,6 +89,7 @@ const games: Game[] = [
   },
   {
     blurb: "Cem operadores, um mapa em colapso: extração ou eliminação.",
+    cover: "/assets/games/cerco-final.webp",
     genre: "Battle Royale Tático",
     price: "R$ 149,90",
     rank: "08",
