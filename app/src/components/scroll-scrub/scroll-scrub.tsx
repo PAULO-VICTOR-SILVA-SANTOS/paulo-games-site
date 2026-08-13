@@ -493,6 +493,8 @@ export function ScrollScrub({
       }
     };
 
+    let skipMobileFrame = false;
+
     const tick = () => {
       if (destroyed) {
         return;
@@ -501,7 +503,17 @@ export function ScrollScrub({
         dirty = false;
         readScroll();
       }
-      updateVideos();
+      // Mobile decoders choke on a currentTime seek every rAF tick (~60/s)
+      // against an all-keyframe clip; halving the seek rate still reads as
+      // smooth for a scroll-driven story and cuts decode load substantially.
+      if (isMobile()) {
+        skipMobileFrame = !skipMobileFrame;
+        if (skipMobileFrame) {
+          updateVideos();
+        }
+      } else {
+        updateVideos();
+      }
       frame = window.requestAnimationFrame(tick);
     };
 
